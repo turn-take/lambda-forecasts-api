@@ -4,11 +4,14 @@
   "description": "Lambda-driven API to get weather forecast",
   "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "archive": "node ./build.js"
   },
   "author": "turn-take",
   "license": "ISC",
   "dependencies": {
+    "archiver": "^3.1.1",
+    "fs": "0.0.1-security",
     "request": "^2.88.2",
     "request-promise": "^4.2.5",
     "xml2js": "^0.4.23"
