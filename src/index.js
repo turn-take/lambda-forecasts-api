@@ -12,31 +12,31 @@ exports.handler = async () => {
     return new Promise((resolve) => {
         fetchAreaIDListPromise().then(idList => {
             forecastingPromise(idList).then(array => {
-
-                const body = {};
-
-                body.success = array;
-            
-                const respose = {
-                    statusCode: 200,
-                    body: JSON.stringify(body)
-                };
-            
-                resolve(respose);
+                const response = createResponse(200, array, true);
+                resolve(response);
             });
         }).catch(err => {
-            const body = {};
-
-            body.error = 'エラーが発生しました。 エラートレース：' + err;
-
-            const respose = {
-                statusCode: 500,
-                body: JSON.stringify(body)
-            };
-
-            resolve(respose);
+            const content = 'エラーが発生しました。 エラートレース：' + err;
+            const response = createResponse(500, content, false);
+            resolve(response);
         });
     });
+};
+
+/**
+ * レスポンスを作成する。
+ * @param {Number} statusCode 
+ * @param {Object} content 
+ * @param {boolean} isSuccess 
+ */
+function createResponse(statusCode, content, isSuccess) {
+    const response = {};
+    response.statusCode = statusCode;
+    const body = response.body = {};
+    const result = JSON.stringify(content);
+    isSuccess ? body.success = result : body.error = result;
+
+    return response;
 };
 
 /**
