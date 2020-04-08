@@ -1,2 +1,2 @@
 # lambda-forecasts-api
-Lambda-driven API to get weather forecast
+天気予報を取得するLambdaで動くAPI
