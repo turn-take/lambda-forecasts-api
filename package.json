@@ -1,0 +1,16 @@
+{
+  "name": "lambda-forecasts-api",
+  "version": "1.0.0",
+  "description": "Lambda-driven API to get weather forecast",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "turn-take",
+  "license": "ISC",
+  "dependencies": {
+    "request": "^2.88.2",
+    "request-promise": "^4.2.5",
+    "xml2js": "^0.4.23"
+  }
+}
