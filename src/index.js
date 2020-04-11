@@ -32,9 +32,13 @@ exports.handler = async () => {
 function createResponse(statusCode, content, isSuccess) {
     const response = {};
     response.statusCode = statusCode;
-    const body = response.body = {};
-    const result = JSON.stringify(content);
-    isSuccess ? body.success = result : body.error = result;
+
+    const body = {};
+
+    isSuccess ? body.success = content : body.error = content;
+    
+    // インデント付与
+    response.body = JSON.stringify(body, undefined, 1);
 
     return response;
 };
